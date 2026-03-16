@@ -1,7 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "sharedGlobals": [
       {
         "runtime": "node -e 'console.log(`${process.platform}-${process.arch}`)'"
@@ -31,7 +34,9 @@
         "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/jest.config.ts"
       ],
-      "dependsOn": ["build"],
+      "dependsOn": [
+        "build"
+      ],
       "cache": true,
       "options": {
         "passWithNoTests": true
@@ -44,16 +49,27 @@
       }
     },
     "lint": {
-      "inputs": ["default", "{workspaceRoot}/eslint.config.mjs"],
+      "inputs": [
+        "default",
+        "{workspaceRoot}/eslint.config.mjs"
+      ],
       "cache": true
     },
     "build": {
-      "inputs": ["production", "^production"],
-      "dependsOn": ["^build"],
+      "inputs": [
+        "production",
+        "^production"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
       "cache": true
     },
     "compile": {
-      "inputs": ["production", "^production"],
+      "inputs": [
+        "production",
+        "^production"
+      ],
       "cache": true
     },
     "e2e": {
@@ -76,7 +92,10 @@
     },
     "prepare-for-e2e": {
       "executor": "nx:run-commands",
-      "inputs": ["default", "^production"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
       "options": {
         "commands": [
           {
@@ -91,7 +110,9 @@
       "cache": false
     },
     "run-e2e-tests-ci--**/*": {
-      "dependsOn": ["prepare-for-e2e"],
+      "dependsOn": [
+        "prepare-for-e2e"
+      ],
       "inputs": [
         "default",
         "^production",
@@ -113,7 +134,9 @@
         "passWithNoTests": true,
         "runInBand": true
       },
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "cache": true
     },
     "run-e2e-tests-process": {
@@ -136,16 +159,24 @@
       "cache": true
     },
     "integration": {
-      "inputs": ["default"],
-      "dependsOn": ["^build"],
+      "inputs": [
+        "default"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
       "cache": true
     }
   },
   "plugins": [
     {
       "plugin": "@nx/jest/plugin",
-      "include": ["e2e/**"],
-      "exclude": ["e2e/run/**"],
+      "include": [
+        "e2e/**"
+      ],
+      "exclude": [
+        "e2e/run/**"
+      ],
       "options": {
         "targetName": "run-e2e-tests",
         "ciTargetName": "run-e2e-tests-ci"
@@ -153,5 +184,6 @@
     }
   ],
   "nxCloudAccessToken": "MGQ4ZjkyMWYtYTVhNi00ZWQ4LWE0OTctNTkxM2U0ZDUzYWQ1fHJlYWQ=",
-  "bust": 1
+  "bust": 1,
+  "nxCloudId": "69b881d74f28368ed7f25ecf"
 }
